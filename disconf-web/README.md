@@ -81,7 +81,6 @@ disconf-web
 ***注意，即使只有一个redis，也应该配置两个redis client，否则将造成内部错误。***
 
 
-
 **设置War包将要被部署的地址（以下地址可自行设定）：**
 
 	/home/work/dsp/disconf-rd/war
@@ -111,6 +110,7 @@ disconf-web
 0-init_table.sql        
 1-init_data.sql         
 201512/20151225.sql
+20160701/20160701.sql
 
 里面默认有6个用户（**请注意线上环境删除这些用户以避免潜在的安全问题**）
 
@@ -148,7 +148,7 @@ testUser5 | MhxzKhl112
     server {
 
         listen   8081;
-        server_name localhost;
+        server_name disconf.com;
         access_log /home/work/var/logs/disconf/access.log;
         error_log /home/work/var/logs/disconf/error.log;
 
@@ -168,6 +168,12 @@ testUser5 | MhxzKhl112
             proxy_pass http://disconf;
         }
     }
+    
+### 关于host
+
+这里的 host 设置成 disconf.com （可以自定义），但它 必须与 application.properties 里的domain一样。
+
+然后浏览器的访问域名也是这个。
 
 ## 业务功能 ##
 
